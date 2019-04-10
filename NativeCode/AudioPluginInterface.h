@@ -97,7 +97,43 @@ typedef unsigned long long UInt64;
 #           define SInt64_defined
 typedef signed long long SInt64;
 #       endif
-    #endif
+#   elif PLATFORM_LUMIN
+#       ifndef SInt32_defined
+#           define SInt32_defined
+typedef signed int SInt32;
+#       endif
+#       ifndef UInt32_defined
+#           define UInt32_defined
+typedef unsigned int UInt32;
+#       endif
+#       ifndef UInt64_defined
+#           define UInt64_defined
+typedef unsigned long long UInt64;
+#       endif
+#       ifndef SInt64_defined
+#           define SInt64_defined
+typedef signed long long SInt64;
+#       endif
+#   elif PLATFORM_ANDROID
+#       ifndef SInt32_defined
+#           define SInt32_defined
+typedef signed int SInt32;
+#       endif
+#       ifndef UInt32_defined
+#           define UInt32_defined
+typedef unsigned int UInt32;
+#       endif
+#       ifndef UInt64_defined
+#           define UInt64_defined
+typedef unsigned long long UInt64;
+#       endif
+#       ifndef SInt64_defined
+#           define SInt64_defined
+typedef signed long long SInt64;
+#       endif   
+#   else
+#       error("AudioPluginInterface: Unknown platform! (64 bit)")
+#   endif
 #else
 #       ifndef SInt32_defined
 #           define SInt32_defined
@@ -116,6 +152,11 @@ typedef unsigned long long UInt64;
 typedef signed long long SInt64;
 #       endif
 #endif
+
+static_assert(sizeof(SInt32) == 4, "wrong SInt32 size");
+static_assert(sizeof(UInt32) == 4, "wrong UInt32 size");
+static_assert(sizeof(UInt64) == 8, "wrong UInt64 size");
+static_assert(sizeof(SInt64) == 8, "wrong SInt64 size");
 
 #endif
 
