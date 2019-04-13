@@ -14,5 +14,5 @@ target_compile_options(NativeAudioPlugins
 		-Wno-self-assign
 		-Wno-shorten-64-to-32>
 	$<$<CXX_COMPILER_ID:MSVC>:
-		/wd4558>
+		/wd4458>
 	)
