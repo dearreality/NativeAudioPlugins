@@ -5,14 +5,14 @@ project(NativeAudioPlugins)
 add_library(NativeAudioPlugins INTERFACE)
 
 target_include_directories(NativeAudioPlugins
-	INTERFACE
-	NativeCode)
+    INTERFACE
+    NativeCode)
 
 target_compile_options(NativeAudioPlugins
-	INTERFACE
-	$<$<OR:$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>>:
-		-Wno-self-assign
-		-Wno-shorten-64-to-32>
-	$<$<CXX_COMPILER_ID:MSVC>:
-		/wd4458>
-	)
+    INTERFACE
+    $<$<OR:$<CXX_COMPILER_ID:AppleClang>,$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:
+        -Wno-self-assign
+        -Wno-shorten-64-to-32>
+    $<$<CXX_COMPILER_ID:MSVC>:
+        /wd4458>
+    )
